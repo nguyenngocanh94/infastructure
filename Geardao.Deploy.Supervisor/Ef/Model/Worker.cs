@@ -1,21 +1,17 @@
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿﻿using System;
+using System.Collections.Generic;
 
 namespace Geardao.Deploy.Supervisor.Ef.Model
 {
-    public class Worker
+    public partial class Worker
     {
-        [Key]
-        public int Id { get; set; }
-
+        public long Id { get; set; }
         public string Ip { get; set; }
-
-        public string PrivateKey { get; set; }
-
-        public int InstanceInPool { get; set; }
-
-        public int MaxInstanceInPool { get; set; }
+        public string Privatekey { get; set; }
+        public long? Instanceinpool { get; set; }
+        public long? Maxinstanceinpool { get; set; }
+        public long? Healthy { get; set; }
         
-        public int Healthy { get; set; }
+        public ICollection<Execute> Executes { get; set; }
     }
 }

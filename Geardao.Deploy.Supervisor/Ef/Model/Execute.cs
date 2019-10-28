@@ -1,23 +1,16 @@
-using System.ComponentModel.DataAnnotations;
+﻿﻿using System;
+using System.Collections.Generic;
 
 namespace Geardao.Deploy.Supervisor.Ef.Model
 {
-    public class Execute
+    public partial class Execute
     {
-        [Key]
-        public int Id { get; set; }
-
-        public Worker Worker { get; set; }
-        
+        public long Id { get; set; }
         public Task Task { get; set; }
-
-        public int ExecuteTime { get; set; }
-
-        public int Timeout { get; set; }
-        
-        public int Status { get; set; }
-        
-        public string ReturnLog { get; set; }
-        
+        public Worker Worker { get; set; }
+        public long? Executetime { get; set; }
+        public long? Timeout { get; set; }
+        public long? Status { get; set; }
+        public string Returnlog { get; set; }
     }
 }

@@ -5,7 +5,7 @@ namespace Geardao.Deploy.Supervisor.Configuration
 {
     public static class EventBusConfiguration
     {
-        public static IServiceCollection ConfigureDatabase(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection ConfigureEventBus(this IServiceCollection services, IConfiguration configuration)
         {
             EventBusServiceCollectionExtensions.AddEventBus(services, builder=>
             {

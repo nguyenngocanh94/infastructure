@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Geardao.Deploy.Supervisor.Ef;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Geardao.Deploy.Supervisor.Controllers
@@ -10,10 +11,22 @@ namespace Geardao.Deploy.Supervisor.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
+        private readonly SupervisorContext _dbContext;
+
+        public ValuesController(SupervisorContext dbContext):base()
+        {
+            _dbContext = dbContext;
+        }
         // GET api/values
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
+            _dbContext.Worker.Add(new Ef.Model.Worker()
+            {
+                Id = 1,
+                Ip="102.112.334.11"
+            }) ;
+            _dbContext.SaveChanges();
             return new string[] { "value1", "value2" };
         }
 

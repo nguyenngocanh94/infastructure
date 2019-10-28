@@ -1,23 +1,18 @@
-using System;
-using System.ComponentModel.DataAnnotations;
+﻿﻿using System;
+using System.Collections.Generic;
 
 namespace Geardao.Deploy.Supervisor.Ef.Model
 {
-    public class Task
+    public partial class Task
     {
-        [Key]
-        public int Id { get; set; }
-        
+        public long Id { get; set; }
         public string Name { get; set; }
-
-        public int Timeout { get; set; }
-
-        public int RetryTime { get; set; }
-
-        public int Status { get; set; }
-
-        public DateTime StartTime { get; set; }
-
-        public DateTime CreateTime { get; set; }
+        public long? Timeout { get; set; }
+        public long? Executetime { get; set; }
+        public long? Retrytime { get; set; }
+        public long? Status { get; set; }
+        public string Starttime { get; set; }
+        public string Createtime { get; set; }
+        public ICollection<Execute> Executes { get; set; }
     }
 }

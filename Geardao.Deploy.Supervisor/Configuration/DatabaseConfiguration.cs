@@ -10,8 +10,8 @@ namespace Geardao.Deploy.Supervisor.Configuration
     {
         public static IServiceCollection ConfigureDatabase(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContext<ApplicationDatabaseContext>(
-                option => { option.UseSqlite(configuration["ConnectionStrings"]); });
+            services.AddDbContext<SupervisorContext>(
+                option => { option.UseSqlite(configuration["ConnectionStrings:Default"]); });
 
             return services;
         }

@@ -12,15 +12,15 @@ namespace Geardao.Deploy.Supervisor.EventBus
             _eventPublisher = eventPublisher;
         }
         
-        public void Fire(object changeReport)
+        public void Fire(object message)
         {
-            throw new NotImplementedException();
+            _eventPublisher.PublishEventAsync(message);
         }
     }
     
     
     public interface IEventBus
     {
-        void Fire(Object changeReport);
+        void Fire(Object message);
     }
 }

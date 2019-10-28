@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Geardao.Deploy.Supervisor.Configuration;
 using Geardao.Deploy.Supervisor.EventBus;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -27,7 +28,8 @@ namespace Geardao.Deploy.Supervisor
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IEventBus, TaskEventBus>();
-            
+            services.ConfigureDatabase(Configuration);
+            services.ConfigureEventBus(Configuration);
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
