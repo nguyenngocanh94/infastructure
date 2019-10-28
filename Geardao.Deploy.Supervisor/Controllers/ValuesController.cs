@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Geardao.Deploy.Supervisor.Ef;
+using Geardao.Deploy.Supervisor.Ef.Model;
+using Task = Geardao.Deploy.Supervisor.Ef.Model.Task;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Geardao.Deploy.Supervisor.Controllers
@@ -21,12 +23,6 @@ namespace Geardao.Deploy.Supervisor.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
-            _dbContext.Worker.Add(new Ef.Model.Worker()
-            {
-                Id = 1,
-                Ip="102.112.334.11"
-            }) ;
-            _dbContext.SaveChanges();
             return new string[] { "value1", "value2" };
         }
 

@@ -15,5 +15,10 @@ namespace Geardao.Deploy.Supervisor.Controllers
             _dbContext = supervisorContext;
             _logger = logger;
         }
+
+        public BaseController()
+        {
+            
+        }
     }
 }

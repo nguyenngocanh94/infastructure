@@ -9,17 +9,13 @@ namespace Geardao.Deploy.Supervisor.Service
         protected readonly SupervisorContext _dbContext;
         protected ILogger<BaseService> _logger;
         protected IEventBus _eventBus;
-        
-        public BaseService(SupervisorContext context, ILogger<BaseService> logger, IEventBus eventBus)
+        protected IHttpContext _httpContext;
+        public BaseService(SupervisorContext context, ILogger<BaseService> logger, IEventBus eventBus, IHttpContext httpContext)
         {
             _dbContext = context;
             _logger = logger;
             _eventBus = eventBus;
-        }
-
-        public BaseService()
-        {
-            
+            _httpContext = httpContext;
         }
     }
 }
