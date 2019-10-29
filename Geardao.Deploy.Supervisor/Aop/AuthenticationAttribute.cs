@@ -11,13 +11,11 @@ namespace Geardao.Deploy.Supervisor.Aop
     public class AuthenticationAttribute : ActionFilterAttribute
     {
         private readonly SupervisorContext _dbContext;
-        private readonly ILogger<AuthenticationAttribute> _logger;
         private readonly IAuth _auth;
-        public AuthenticationAttribute(SupervisorContext context, ILogger<AuthenticationAttribute> logger, IAuth auth)
+        public AuthenticationAttribute(SupervisorContext context,  IAuth auth)
         {
             _dbContext = context;
             _auth = auth;
-            _logger = logger;
         }
         
         public override void OnActionExecuting(ActionExecutingContext filterContext)

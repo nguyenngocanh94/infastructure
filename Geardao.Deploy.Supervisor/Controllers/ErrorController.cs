@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Geardao.Deploy.Supervisor.Ef;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace Geardao.Deploy.Supervisor.Controllers
 {
@@ -17,6 +19,10 @@ namespace Geardao.Deploy.Supervisor.Controllers
                 default:
                     return "404 Not Found";
             }
+        }
+
+        public ErrorController(ILogger<BaseController> logger) : base(logger)
+        {
         }
     }
 }

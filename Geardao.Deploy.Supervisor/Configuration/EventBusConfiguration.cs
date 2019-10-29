@@ -11,6 +11,7 @@ namespace Geardao.Deploy.Supervisor.Configuration
             {
                 builder.AddInMemoryEventBus(subscriber=>
                 {
+                    
                     // todo add event handler when catch a event
                 });
             });

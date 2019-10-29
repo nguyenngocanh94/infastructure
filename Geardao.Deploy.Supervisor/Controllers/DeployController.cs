@@ -21,6 +21,10 @@ namespace Geardao.Deploy.Supervisor.Controllers
             }
              
         }
+
+        public DeployController(ILogger<BaseController> logger) : base(logger)
+        {
+        }
     }
 
    

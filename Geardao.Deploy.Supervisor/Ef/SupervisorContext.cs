@@ -16,7 +16,7 @@ namespace Geardao.Deploy.Supervisor.Ef
 
         public virtual DbSet<Execute> Execute { get; set; }
         public virtual DbSet<Task> Task { get; set; }
-        public virtual DbSet<Worker> Worker { get; set; }
+        public virtual DbSet<Model.Worker> Worker { get; set; }
         public virtual DbSet<Auth> Auth { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -28,7 +28,7 @@ namespace Geardao.Deploy.Supervisor.Ef
                 entity.Property(e => e.Id)
                     .HasColumnName("id")
                     .HasColumnType("BIGINT")
-                    .ValueGeneratedNever();
+                    .ValueGeneratedOnAdd();
 
                 entity.Property(e => e.Executetime).HasColumnName("executetime");
 
@@ -47,10 +47,10 @@ namespace Geardao.Deploy.Supervisor.Ef
 
                 entity.Property(e => e.Id)
                     .HasColumnName("id")
-                    .HasColumnType("BIGINT")
-                    .ValueGeneratedNever();
+                    .HasColumnType("BIGINT").
+                    ValueGeneratedOnAdd();
 
-                entity.Property(e => e.Createtime)
+                entity.Property(e => e.CreateTime)
                     .HasColumnName("createtime")
                     .HasColumnType("DATETIME");
 
@@ -73,14 +73,21 @@ namespace Geardao.Deploy.Supervisor.Ef
                 entity.HasMany(t => t.Executes).WithOne(t => t.Task);
             });
 
-            modelBuilder.Entity<Worker>(entity =>
+            modelBuilder.Entity<Model.Worker>(entity =>
             {
                 entity.ToTable("worker");
 
                 entity.Property(e => e.Id)
                     .HasColumnName("id")
+                    .ValueGeneratedOnAdd();
+                
+                entity.Property(e => e.State)
+                    .HasColumnName("state")
                     .ValueGeneratedNever();
-
+                entity.Property(e => e.Weight)
+                    .HasColumnName("weight")
+                    .ValueGeneratedNever();
+                
                 entity.Property(e => e.Healthy).HasColumnName("healthy");
 
                 entity.Property(e => e.Instanceinpool).HasColumnName("instanceinpool");
@@ -91,8 +98,12 @@ namespace Geardao.Deploy.Supervisor.Ef
 
                 entity.Property(e => e.Maxinstanceinpool).HasColumnName("maxinstanceinpool");
 
-                entity.Property(e => e.Privatekey)
-                    .HasColumnName("privatekey")
+                entity.Property(e => e.Password)
+                    .HasColumnName("password")
+                    .HasColumnType("VARCHAR(255)");
+                
+                entity.Property(e => e.Username)
+                    .HasColumnName("username")
                     .HasColumnType("VARCHAR(255)");
                 
                 entity.HasMany(t => t.Executes).WithOne(w => w.Worker);

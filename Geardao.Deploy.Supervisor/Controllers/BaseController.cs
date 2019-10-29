@@ -8,17 +8,10 @@ namespace Geardao.Deploy.Supervisor.Controllers
     public class BaseController : ControllerBase
     {
         protected ILogger<BaseController> _logger;
-        protected SupervisorContext _dbContext;
         
-        public BaseController(SupervisorContext supervisorContext, ILogger<BaseController> logger)
+        public BaseController(ILogger<BaseController> logger)
         {
-            _dbContext = supervisorContext;
             _logger = logger;
-        }
-
-        public BaseController()
-        {
-            
         }
     }
 }

@@ -2,7 +2,6 @@
 using System.Linq;
 using Geardao.Deploy.Supervisor.Ef;
 using Geardao.Deploy.Supervisor.EventBus;
-using Geardao.Deploy.Supervisor.Utilities;
 using Microsoft.Extensions.Logging;
 
 namespace Geardao.Deploy.Supervisor.Service

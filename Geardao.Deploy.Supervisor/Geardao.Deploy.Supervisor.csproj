@@ -7,7 +7,9 @@
 
   <ItemGroup>
     <Folder Include="Ef" />
-    <Folder Include="sqllite" />
+    <Folder Include="Socket\ssl" />
+    <Folder Include="sqlite" />
+    <Folder Include="Worker\Client" />
     <Folder Include="wwwroot\" />
     <Folder Include="EventBus\" />
   </ItemGroup>
@@ -24,6 +26,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="NetCoreServer" Version="1.4.0" />
     <PackageReference Include="SSH.Net.Core" Version="0.9.1-rc" />
   </ItemGroup>
 

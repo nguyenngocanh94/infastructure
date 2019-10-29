@@ -1,33 +1,18 @@
 ﻿using Geardao.Deploy.Supervisor.Ef;
-using Microsoft.Extensions.Logging;
-using Renci.SshNet;
-using WorkerDb = Geardao.Deploy.Supervisor.Ef.Model.Worker;
+using Geardao.Deploy.Supervisor.Socket;
 
 namespace Geardao.Deploy.Supervisor.Worker
 {
     public class WorkerInstance
     {
-        public WorkerDb Worker { get; private set; }
         private SupervisorContext _dbContext;
-        private ILogger<WorkerInstance> _logger;
-        
-        public WorkerInstance(WorkerDb worker, SupervisorContext dbContext, ILogger<WorkerInstance> logger)
+        public Ef.Model.Worker Worker { get; set; }
+        public Session SocketSesson { get; private set; }
+        public WorkerInstance(SupervisorContext dbContext, Ef.Model.Worker worker, Session socketSesson)
         {
-            Worker = worker;
-            _logger = logger;
             _dbContext = dbContext;
-        }
-
-
-        public bool SetUpClient()
-        {
-            return true;
-        }
-
-        public ConnectionInfo GetSshConnection()
-        {
-           return  new ConnectionInfo(Worker.Ip, Worker.Username,
-                new PasswordAuthenticationMethod(Worker.Username, Worker.Password));
+            Worker = worker;
+            SocketSesson = socketSesson;
         }
     }
 }
